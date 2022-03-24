@@ -16,7 +16,7 @@ public class ClassTest {
 		users = new User[10];
 		index = 0;
 		
-		app.get("/users", ctx -> {
+		app.get("/login", ctx -> {
 			String allUsers = "";
 			for(User user  : users) {
 				if (user != null) {
@@ -32,11 +32,11 @@ public class ClassTest {
 		});
 		
 		app.post("/create", ctx -> {
-			System.out.println(ctx.formParam("pass"));
 			Person p = new Person(ctx.formParam("fName"), ctx.formParam("lName"), ctx.formParam("roles"));
 			User u = new User(p, ctx.formParam("uName"), ctx.formParam("pass"));
 			users[index] = u;
 			index ++;
+			ctx.redirect("/login");
 		});
 		
 	}

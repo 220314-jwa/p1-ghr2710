@@ -1,0 +1,19 @@
+<html> 
+	<head> 
+		<title>Log-in</title>
+	</head> 
+	<body> 
+		<h1>Log-in</h1>
+		<form method="post" action="http://localhost:8080/login">
+			<script src="../javascript/background.js"></script>
+			<label for="uName">Username:</label> 
+			<input id="uName" name="uName" type="text" required>
+			<br> <br>
+			<label for="pass">Password:</label> 
+			<input id="pass" name="pass" type="password" required>
+			<input type="checkbox" id="show" onclick="reveal()">Show Password
+			<br><br>
+			<button type="submit">Submit</button> 
+		</form>
+	</body> 
+</html> 

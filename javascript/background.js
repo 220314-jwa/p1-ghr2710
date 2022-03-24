@@ -6,3 +6,7 @@ function reveal(){
     x.type = "password";
   }
 }
+
+function direct_to_users(){
+  location.replace('file://../html/Account-Creation-Page.html');
+}
