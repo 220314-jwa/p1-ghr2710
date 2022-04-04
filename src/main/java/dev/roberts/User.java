@@ -1,15 +1,24 @@
-package test.dev.roberts;
-import test.dev.roberts.Person;
+package dev.roberts;
+
+import dev.roberts.Person;
 
 public class User {
 	 
-	private String uName, password;
+	private String uName, password, role;
 	private Person person;
 	
-	User(Person p, String uName, String pass){
+	public User(){
+		this.person = new Person();
+		this.uName = "Unassigned";
+		this.password = "Password";
+		this.role = "NONE";
+	}
+	
+	User(Person p, String uName, String pass, String role){
 		this.person = p;
 		this.uName = uName;
 		this.password = pass;
+		this.role = role;
 	}
 	
 	public String getUser() {
@@ -18,6 +27,10 @@ public class User {
 	
 	public String getPass() {
 		return password;
+	}
+	
+	public String getRole() {
+		return role;
 	}
 	
 	public Person getPerson() {
@@ -30,6 +43,10 @@ public class User {
 	
 	public void setPass(String pass) {
 		password = pass;
+	}
+	
+	public void setRole(String role) {
+		this.role = role;
 	}
 	
 	public void setPerson(Person p) {
