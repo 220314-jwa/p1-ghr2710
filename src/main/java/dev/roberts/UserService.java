@@ -123,5 +123,102 @@ public class UserService {
 			return false;
 		}
 	}
+	
+	public Boolean createStory(Story s){
+		Boolean b = false;
+		try {
+			b = handler.queryCreateStory(s);
+		}
+		catch(Exception e) {
+			System.out.println("SQL Error");
+			return false;
+		}
+		return b;
+	}
 
+	public Boolean updateStory(Story s){
+		Boolean b = false;
+		try {
+			b = handler.queryUpdateStory(s);
+		}
+		catch(Exception e) {
+			System.out.println("SQL Error");
+			return false;
+		}
+		return b;
+	}
+	
+	public Story[] loadSeniorEditor(){
+		Story[] sList= new Story[0];
+		try {
+			sList = handler.queryGetAllStories();
+		}
+		catch(Exception e) {
+			System.out.println("SQL Error");
+		}
+		return sList;
+	}
+	
+	public Story[] loadEditor(User u) throws UserDoesNotExistException {
+		Boolean exists = false;
+		try {
+			exists = handler.queryUserExists(u.getUser());
+		}
+		catch (Exception e) {
+			//User exists query went wrong
+			return null;
+		}
+		
+		Story[] sList= new Story[0];
+		
+		if (exists) {
+			try {
+				sList = handler.queryGetStoriesByEditor(u);
+			}
+			catch(Exception e) {
+				System.out.println("SQL Error");
+			}
+			return sList;
+		}
+		else {
+			throw new UserDoesNotExistException();
+		}
+	}
+	
+	public Story[] loadAuthor(User u) throws UserDoesNotExistException {
+		Boolean exists = false;
+		try {
+			exists = handler.queryUserExists(u.getUser());
+		}
+		catch (Exception e) {
+			//User exists query went wrong
+			return null;
+		}
+		
+		Story[] sList= new Story[0];
+		
+		if (exists) {
+			try {
+				sList = handler.queryGetStoriesByEditor(u);
+			}
+			catch(Exception e) {
+				System.out.println("SQL Error");
+			}
+			return sList;
+		}
+		else {
+			throw new UserDoesNotExistException();
+		}
+	}
+	
+	public Boolean deleteStory(Story s){
+		Boolean deleted = false;
+		try {
+			deleted = handler.queryDeleteStory(s);
+		}
+		catch (Exception e) {
+			//Something went wrong
+		}
+		return deleted;
+	}
 }

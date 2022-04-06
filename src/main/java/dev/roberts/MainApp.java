@@ -50,9 +50,5 @@ public class MainApp {
 			ctx.result("Welcome " + u.getPerson().getName() + "!");
 		});
 		
-		//Working with dates
-		//Date day = new Date();
-		//System.out.println(day);
-		
 	}
 }

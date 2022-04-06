@@ -6,7 +6,7 @@ import dev.roberts.User;
 
 public class Story {
 	private User author, editor;
-	private String title, blurb, description, status;
+	private String title, blurb, description, status, genre, oldTitle;
 	private Date estCompDate;
 	private int storyLength;
 
@@ -15,6 +15,7 @@ public class Story {
 		this.author = new User();
 		this.editor = new User();
 		this.title = "TITLE";
+		this.genre = "GENRE";
 		this.blurb = "BLURB";
 		this.description = "DESCRIPTION";
 		this.status = "STATUS";
@@ -22,13 +23,38 @@ public class Story {
 		this.storyLength = 0;
 	}
 	
-	public Story(User auth, String title, String blurb, String desc, Date day, int len) {
+	public Story(String title) {
+		this.author = new User();
+		this.editor = new User();
+		this.title = title;
+		this.genre = "GENRE";
+		this.blurb = "BLURB";
+		this.description = "DESCRIPTION";
+		this.status = "STATUS";
+		this.estCompDate = new Date();
+		this.storyLength = 0;
+	}
+	
+	public Story(User auth, String title, String genre, String blurb, String desc, Date day, int len) {
 		this.author = auth;
 		this.editor = new User();
 		this.title = title;
+		this.title = genre;
 		this.blurb = blurb;
 		this.description = desc;
 		this.status = "Pending senior editor approval";
+		this.estCompDate = day;
+		this.storyLength = len;
+	}
+	
+	public Story(User auth, User ed, String title, String genre, int len, Date day, String blurb, String desc, String st) {
+		this.author = auth;
+		this.editor = ed;
+		this.title = title;
+		this.title = genre;
+		this.blurb = blurb;
+		this.description = desc;
+		this.status = st;
 		this.estCompDate = day;
 		this.storyLength = len;
 	}
@@ -45,6 +71,14 @@ public class Story {
 		return title;
 	}
 	
+	public String getOldTitle() {
+		return oldTitle;
+	}
+	
+	public String getGenre() {
+		return genre;
+	}
+	
 	public String getBlurb() {
 		return blurb;
 	}
@@ -55,6 +89,10 @@ public class Story {
 	
 	public String getStatus() {
 		return status;
+	}
+	
+	public java.sql.Date sqlCompDate() {
+		return new java.sql.Date(estCompDate.getTime());
 	}
 	
 	public Date getCompDate() {
@@ -74,7 +112,12 @@ public class Story {
 	}
 	
 	public void setTitle(String s) {
+		oldTitle = title;
 		title = s;
+	}
+	
+	public void setGenre(String s) {
+		genre = s;
 	}
 	
 	public void setBlurb(String s) {

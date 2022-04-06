@@ -63,6 +63,7 @@ public class UserServiceTests {
 	@Test
 	public void deleteAcctFail() {
 		User u = new User();
+		u.setUser("DNE");
 		
 		assertThrows(UserDoesNotExistException.class, () -> {
 			service.deleteAcct(u);
@@ -86,6 +87,104 @@ public class UserServiceTests {
 		
 		assertThrows(UserAlreadyExistsException.class, () -> {
 			service.createAcct(u);
+		});
+		
+	}
+	
+	@Test
+	public void createStory() {
+		Story s = new Story();
+		
+		Boolean b = service.createStory(s);
+		service.deleteStory(s);
+		
+		assertEquals(b, true);
+		
+	}
+	
+	@Test
+	public void updateStory() {
+		Story s = new Story();
+		
+		service.createStory(s);
+		
+		s.setTitle("NEW STORY");
+		
+		Boolean b = service.updateStory(s);
+		
+		assertEquals(b, true);
+		
+	}
+	
+	@Test
+	public void updateStoryNotExists() {
+		Story s = new Story("DNE");
+		
+		Boolean b = service.updateStory(s);
+		
+		assertEquals(b, false);
+		
+	}
+	
+	@Test
+	public void viewStories() {
+		Story[] s;
+		Boolean b = false;
+		
+		s = service.loadSeniorEditor();
+		
+		if (s.length > 0) b = true;
+		
+		assertEquals(b, true);
+		
+	}
+	
+	@Test
+	public void viewStoriesByAuthor() throws UserDoesNotExistException {
+		User u = new User();
+		Story[] s;
+		Boolean b = false;
+		
+		s = service.loadAuthor(u);
+		
+		if (s.length > 0) b = true;
+		
+		assertEquals(b, true);
+		
+	}
+	
+	@Test
+	public void viewStoriesByAuthorDNE() throws UserDoesNotExistException {
+		User u = new User();
+		u.setUser("DNE");
+		
+		assertThrows(UserDoesNotExistException.class, () -> {
+			service.loadAuthor(u);
+		});
+		
+	}
+	
+	@Test
+	public void viewStoriesByEditor() throws UserDoesNotExistException {
+		User u = new User();
+		Story[] s;
+		Boolean b = false;
+		
+		s = service.loadEditor(u);
+		
+		if (s.length > 0) b = true;
+		
+		assertEquals(b, true);
+		
+	}
+	
+	@Test
+	public void viewStoriesByEditorDNE() throws UserDoesNotExistException {
+		User u = new User();
+		u.setUser("DNE");
+		
+		assertThrows(UserDoesNotExistException.class, () -> {
+			service.loadEditor(u);
 		});
 		
 	}
