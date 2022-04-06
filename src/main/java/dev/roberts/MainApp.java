@@ -32,12 +32,18 @@ public class MainApp {
 		app.post("/create", ctx -> {
 			Person p = new Person(ctx.formParam("fName"), ctx.formParam("lName"));
 			User u = new User(p, ctx.formParam("uName"), ctx.formParam("pass"), ctx.formParam("roles"));
+			try {
 			Boolean res = service.createAcct(u);
 			if (res) {
-				ctx.result("Account created successfully");
+					ctx.result("Account created successfully");
+				}
+				else {
+					ctx.result("Account creation failed");
+				}
 			}
-			else {
-				ctx.result("Account creation failed");
+			catch (Exception e) {
+				String err = e.toString();
+				ctx.result(err);
 			}
 		});
 		
