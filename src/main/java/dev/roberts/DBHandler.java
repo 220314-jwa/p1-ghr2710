@@ -51,6 +51,40 @@ public class DBHandler {
 		return u;
 	}
 	
+	public User[] queryGetAllEditors() throws SQLException {
+		
+		Person p = new Person();
+		User u = new User();
+		
+		User[] uList;
+		
+		String query = "SELECT * FROM usertable WHERE user_role = ?";
+		PreparedStatement preparedStatement = connection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS, ResultSet.TYPE_SCROLL_INSENSITIVE , ResultSet.CONCUR_UPDATABLE);
+		preparedStatement.setString(1, "Editor");
+		ResultSet res = preparedStatement.executeQuery();
+		int size = 0;
+		if (res != null) {
+			res.last();
+			System.out.println("HERE");
+			size = res.getRow();
+		}
+		uList = new User[size];
+		res.first();
+		int i = 0;
+		while (i<size) {
+			String username = res.getString("uName");
+			String password = res.getString("pWord");
+			String role = res.getString("User_Role");
+			p = queryGetPerson(username);
+			u = new User(p, username, password, role);
+			uList[i] = u;
+			i++;
+			res.next();
+		}
+		
+		return uList;
+	}
+	
 	public Person queryGetPerson(String uName) throws SQLException {
 		
 		Person p = new Person();
@@ -195,7 +229,7 @@ public class DBHandler {
 		sList = new Story[size];
 		res.first();
 		int i = 0;
-		while (res.next()) {
+		while (i<size) {
 			String author = res.getString("authuser"); 
 			User a = queryGetUser(author);
 			String editor = res.getString("eduser"); 
@@ -210,6 +244,8 @@ public class DBHandler {
 			String status = res.getString("status"); 
 			Story s = new Story(a, e, title, genre, len, day, blurb, desc, status);
 			sList[i] = s;
+			i++;
+			res.next();
 		}
 		return sList;
 	}
@@ -228,7 +264,7 @@ public class DBHandler {
 		sList = new Story[size];
 		res.first();
 		int i = 0;
-		while (res.next()) {
+		while (i<size) {
 			String author = res.getString("authuser"); 
 			User a = queryGetUser(author);
 			String editor = res.getString("eduser"); 
@@ -243,6 +279,8 @@ public class DBHandler {
 			String status = res.getString("status"); 
 			Story s = new Story(a, e, title, genre, len, day, blurb, desc, status);
 			sList[i] = s;
+			i++;
+			res.next();
 		}
 		return sList;
 	}
@@ -261,7 +299,7 @@ public class DBHandler {
 		sList = new Story[size];
 		res.first();
 		int i = 0;
-		while (res.next()) {
+		while (i<size) {
 			String author = res.getString("authuser"); 
 			User a = queryGetUser(author);
 			String editor = res.getString("eduser"); 
@@ -276,6 +314,8 @@ public class DBHandler {
 			String status = res.getString("status"); 
 			Story s = new Story(a, e, title, genre, len, day, blurb, desc, status);
 			sList[i] = s;
+			i++;
+			res.next();
 		}
 		return sList;
 	}

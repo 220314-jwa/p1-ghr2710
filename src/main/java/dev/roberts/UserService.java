@@ -52,6 +52,17 @@ public class UserService {
 		return u;
 	}
 	
+	public User[] getEditors() {
+		User[] uList = new User[0];
+		try {
+			uList = handler.queryGetAllEditors();
+		}
+		catch(Exception e) {
+			System.out.println("SQL Error");
+		}
+		return uList;
+	}
+	
 	public Boolean createAcct(User u) throws UserAlreadyExistsException{
 		Boolean exists = false;
 		try {

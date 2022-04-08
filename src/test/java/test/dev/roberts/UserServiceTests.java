@@ -188,4 +188,16 @@ public class UserServiceTests {
 		});
 		
 	}
+	
+	@Test
+	public void viewAllEditors(){
+		User[] u = new User[0];
+		u = service.getEditors();
+		
+		Boolean b = false;
+		if (u.length > 0) b = true;
+		
+		assertEquals(b, true);
+		
+	}
 }

@@ -55,6 +55,5 @@ public class MainApp {
 			User u = service.login(uName, pass);
 			ctx.result("Welcome " + u.getPerson().getName() + "!");
 		});
-		
 	}
 }

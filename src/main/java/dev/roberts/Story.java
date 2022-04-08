@@ -39,7 +39,7 @@ public class Story {
 		this.author = auth;
 		this.editor = new User();
 		this.title = title;
-		this.title = genre;
+		this.genre = genre;
 		this.blurb = blurb;
 		this.description = desc;
 		this.status = "Pending senior editor approval";
@@ -51,7 +51,7 @@ public class Story {
 		this.author = auth;
 		this.editor = ed;
 		this.title = title;
-		this.title = genre;
+		this.genre = genre;
 		this.blurb = blurb;
 		this.description = desc;
 		this.status = st;
