@@ -4,40 +4,35 @@
 	</head> 
 	<body> 
 		<h1>Create Account</h1>
-		<form method="post" action="http://localhost:8080/create">
-			<script src="../javascript/background.js"></script> 
-			<style>
-				small {color:red}
-				i {color:red}
-			</style>
-			<label for="fName">First Name:</label> 
-			<input id="fName" name="fName" type="text" required>
-			<small>*</small>
-			<br> <br>
-            <label for="lName">Last Name:</label> 
-			<input id="lName" name="lName" type="text" required>
-			<small>*</small>
-			<br> <br>
-			<label for="uName">User Name:</label> 
-			<input id="uName" name="uName" type="text" required>
-			<small>*</small>
-			<br> <br>
-			<label for="pass">Password:</label> 
-			<input id="pass" name="pass" type="password" required> 
-			<small>*</small>
-			<input type="checkbox" id="show" onclick="reveal()">Show Password
-			<br> <br>
-			<label for="roles">Role:</label>
-			<select name="roles" id="roles">
-  				<option value="Author">Author</option>
-  				<option value="Editor">Editor</option>
-  				<option value="Senior Editor">Senior Editor</option>
-			</select>
-			<small>*</small>
-			<br><br>
-			<small>*</small><i>indicates required field</i>
-			<br><br>
-			<button type="submit">Submit</button> 
-		</form>
+		<script src="../javascript/background.js"></script> 
+		<style>
+			small {color:red}
+			i {color:red}
+		</style>
+		<label for="fName">First Name:</label> 
+		<input id="fName" name="fName" type="text" required>
+		<br> <br>
+		<label for="lName">Last Name:</label> 
+		<input id="lName" name="lName" type="text" required>
+		<br> <br>
+		<label for="uName">User Name:</label> 
+		<input id="uName" name="uName" type="text" required>
+		<br> <br>
+		<label for="pass">Password:</label> 
+		<input id="pass" name="pass" type="password" required>
+		<input type="checkbox" id="show" onclick="reveal()">Show Password
+		<br> <br>
+		<label for="roles">Role:</label>
+		<select name="roles" id="roles">
+			<option value="Author">Author</option>
+			<option value="Editor">Editor</option>
+			<option value="Senior Editor">Senior Editor</option>
+		</select>
+		<br><br>
+		<small>*</small><i>All fields are required</i>
+		<br><br>
+		<button onclick="createUser()">Submit</button> 
+		<script src="../javascript/create.js"></script> 
+		<script src="../javascript/main.js"></script>
 	</body> 
 </html> 

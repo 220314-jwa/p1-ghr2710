@@ -67,6 +67,14 @@ public class Story {
 		return editor;
 	}
 	
+	public String getAuthorName() {
+		return author.getUser();
+	}
+	
+	public String getEditorName() {
+		return editor.getUser();
+	}
+	
 	public String getTitle() {
 		return title;
 	}

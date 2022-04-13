@@ -1,0 +1,38 @@
+<html> 
+	<head> 
+		<title>Story Creation</title>
+	</head> 
+	<body> 
+		<h1>Create Story</h1>
+		<style>
+			small {color:red}
+			i {color:red}
+		</style>
+		<label for="title">Title:</label> 
+		<input id="title" name="title" type="text" required>
+		<small>*</small>
+		<br> <br>
+        <label for="genre">Genre:</label> 
+		<input id="genre" name="genre" type="text" required>
+		<small>*</small>
+		<br> <br>
+		<label for="blurb">Blurb:</label> 
+		<input id="blurb" name="blurb" type="text">
+		<br> <br>
+		<label for="desc">Description:</label> 
+		<input id="desc" name="desc" type="text">
+		<br> <br>
+		<label for="len">Estimated Length:</label> 
+		<input id="len" name="len" type="number">
+		<br> <br>
+		<label for="day">Estimated Completion Date:</label> 
+		<input id="day" name="day" type="date" required>
+		<small>*</small>
+		<br><br>
+		<small>*</small><i>Indicates Required Field</i>
+		<br><br>
+		<button onclick="createStory()">Submit</button>
+		<script src="../javascript/create.js"></script> 
+		<script src="../javascript/main.js"></script> 
+	</body> 
+</html> 

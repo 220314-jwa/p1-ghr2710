@@ -52,6 +52,30 @@ public class UserService {
 		return u;
 	}
 	
+	public User getActiveUser(String uName) throws IncorrectCredsException {
+		Person p = new Person();
+		User u = new User();
+		
+		Boolean exists = false;
+		try {
+			exists = handler.queryUserExists(uName);
+		}
+		catch (Exception e) {
+			System.out.println("User exists query went wrong");
+		}
+		
+		if (exists) {
+			try {
+				u = handler.queryGetUser(uName);
+			}
+			catch (Exception e) {
+				System.out.println("Request user query went wrong");
+			}
+		}
+		
+		return u;
+	}
+	
 	public User[] getEditors() {
 		User[] uList = new User[0];
 		try {
@@ -210,7 +234,7 @@ public class UserService {
 		
 		if (exists) {
 			try {
-				sList = handler.queryGetStoriesByEditor(u);
+				sList = handler.queryGetStoriesByAuthor(u);
 			}
 			catch(Exception e) {
 				System.out.println("SQL Error");
@@ -220,6 +244,17 @@ public class UserService {
 		else {
 			throw new UserDoesNotExistException();
 		}
+	}
+	
+	public Story[] fetchByTitle(String s, String u) {
+		Story[] sList= new Story[0];
+		try {
+			sList = handler.queryGetStoryByTitleAndUser(s, u);
+		}
+		catch (Exception e){
+			System.out.println("SQL Error");
+		}
+		return sList;
 	}
 	
 	public Boolean deleteStory(Story s){

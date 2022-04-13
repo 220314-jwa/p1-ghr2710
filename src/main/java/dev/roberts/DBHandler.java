@@ -319,4 +319,41 @@ public class DBHandler {
 		}
 		return sList;
 	}
+	
+	public Story[] queryGetStoryByTitleAndUser(String t, String u) throws SQLException {
+		Story[] sList;
+		String query = "select * from story where (authuser = ? or eduser = ?) and title = ?";
+		PreparedStatement preparedStatement = connection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS, ResultSet.TYPE_SCROLL_INSENSITIVE , ResultSet.CONCUR_UPDATABLE);
+		preparedStatement.setString(1, u);
+		preparedStatement.setString(2, u);
+		preparedStatement.setString(3, t);
+		ResultSet res = preparedStatement.executeQuery();
+		int size = 0;
+		if (res != null) {
+			res.last(); 
+			size = res.getRow();
+		}
+		sList = new Story[size];
+		res.first();
+		int i = 0;
+		while (i<size) {
+			String author = res.getString("authuser"); 
+			User a = queryGetUser(author);
+			String editor = res.getString("eduser"); 
+			User e = queryGetUser(editor);
+			String title = res.getString("title"); 
+			String genre = res.getString("genre"); 
+			int len = res.getInt("slength"); 
+			java.sql.Date d = res.getDate("excompdate");
+			Date day = new Date(d.getTime());
+			String blurb = res.getString("blurb"); 
+			String desc = res.getString("description");
+			String status = res.getString("status"); 
+			Story s = new Story(a, e, title, genre, len, day, blurb, desc, status);
+			sList[i] = s;
+			i++;
+			res.next();
+		}
+		return sList;
+	}
 }

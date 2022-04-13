@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>SPMS</title>
+<style media="screen">
+/* || General setup */
+
+html, body {
+margin: 0;
+padding: 0;
+}
+
+html {
+font-size: 10px;
+background-color: #a9a9a9;
+}
+
+body {
+width: 70%;
+min-width: 800px;
+margin: 0 auto;
+}
+
+/* || typography */
+
+h1, h2, h3 {
+/*font-family: 'Cinzel Decorative', cursive;*/
+font-family: 'Times New Roman', cursive;
+color: #2a2a2a;
+}
+
+p, input, li, tr {
+font-family: 'Roboto Condensed', sans-serif;
+color: #2a2a2a;
+}
+
+h1 {
+font-size: 4rem;
+text-align: center;
+text-shadow: 2px 2px 10px black;
+}
+
+h2 {
+font-size: 3rem;
+text-align: center;
+}
+
+h3 {
+font-size: 2.2 rem;
+}
+
+p, li{
+font-size: 2em;
+line-height: 1.5;
+}
+
+tr{
+font-size: 2em;
+line-height: 1.5;
+text-align: center;
+}
+
+.center{
+margin-left: auto;
+margin-right: auto;
+}
+
+/* || header layout */
+
+header {
+margin-bottom: 10px;
+display: flex;
+flex-flow: row wrap;
+}
+
+body > * {
+background-color: red;
+padding: 1%;
+}
+
+main, header, nav, article, aside, footer, section {
+background-color: rgba(255,255,255,0.5);
+padding: 1%;
+}
+
+h1 {
+flex: 5;
+text-transform: uppercase;
+}
+
+header img {
+display: block;
+height: 60px;
+padding-top: 20.15 px;
+}
+
+nav {
+height: 50px;
+flex: 100%;
+display: flex;
+}
+
+nav ul {
+padding: 0;
+list-style-type: none;
+flex: 2;
+display: flex;
+}
+
+nav li {
+display: inline;
+text-align: center;
+flex: 1;
+}
+
+nav a, nav span {
+display: inline-block;
+font-size: 2rem;
+height: 3rem;
+line-height: 1.7;
+text-transform: uppercase;
+text-decoration: none;
+color: black;
+
+}
+
+/* || main layout */
+
+main {
+display: flex;
+}
+
+article, section {
+flex: 4;
+}
+
+aside {
+flex: 1;
+margin-left: 10px;
+padding: 1%;
+}
+
+aside a {
+display: block;
+float: left;
+width: 50%;
+}
+
+aside img {
+max-width: 100%;
+}
+
+footer {
+margin-top: 10px;
+}
+
+table, th, td {
+border: 1px solid black;
+}
+
+</style>
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300|Cinzel+Decorative:700" rel="stylesheet">
+
+<!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
+
+<body onload="sendAuthorRequest()">
+
+
+<header>
+<h1>Author Home</h1>
+</header>
+<nav>
+
+
+<ul>
+<li><a href="Home-Page.html">Log-Out</a></li>
+<li><a href="Story-Creation-Page.html">Create Story</a></li>
+</ul>
+</nav>
+<main>
+<article>
+<h2>Your Stories</h2>
+
+<table id="story" class="center">
+
+</table></article>
+
+
+</main>
+<footer> <p>This website is used for the SPMS project assignment</p>
+
+<p><a href="https://github.com/220314-jwa/p1-ghr2710">Click Here</a> for my github</p> </footer>
+<script src="../javascript/edit.js"></script>
+<script src="../javascript/stories.js"></script>
+<script src="../javascript/main.js"></script>
+</body>
+</html>
