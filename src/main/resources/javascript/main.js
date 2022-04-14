@@ -33,4 +33,7 @@ async function logIn() {
         location.replace('../html/Senior-Editor-Page.html');
       }
   }
+  else{
+    alert("Username or Password is incorrect");
+  }
 }
