@@ -1,5 +1,7 @@
 package dev.roberts;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import dev.roberts.Person;
 import dev.roberts.User;
@@ -105,6 +107,12 @@ public class Story {
 	
 	public Date getCompDate() {
 		return estCompDate;
+	}
+	
+	public String getStringDate() {
+		SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");  
+        String strDate = formatter.format(estCompDate); 
+		return strDate;
 	}
 	
 	public int getLength() {

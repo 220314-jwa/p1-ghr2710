@@ -36,8 +36,8 @@ function showSeniorStories(storyArr) {
     <th>Genre</th>
     <th>Blurb</th>
     <th>Description</th>
+    <th>Completion Date</th>
     <th>Status</th>
-    <th>Est Length</th>
     </tr>`;
     
     // for each story in the story array from the http response
@@ -51,8 +51,8 @@ function showSeniorStories(storyArr) {
             <td>${story.genre}</td>
             <td>${story.blurb}</td>
             <td>${story.desc}</td>
+            <td>${story.stringDate}</td>
             <td>${story.status}</td>
-            <td>${story.length}</td>
             <td><button id="approve${story.title}">approve</button></td>
             <td><button id="reject${story.title}">reject</button></td>
             <td><button id="assign${story.title}">assign</button></td>
@@ -76,6 +76,7 @@ function showAuthorStories(storyArr) {
     <th>Genre</th>
     <th>Blurb</th>
     <th>Description</th>
+    <th>Completion Date</th>
     <th>Status</th>
     <th>Est Length</th>
     </tr>`;
@@ -91,6 +92,7 @@ function showAuthorStories(storyArr) {
             <td>${story.genre}</td>
             <td>${story.blurb}</td>
             <td>${story.desc}</td>
+            <td>${story.stringDate}</td>
             <td>${story.status}</td>
             <td>${story.length}</td>
             <td><button id="edit${story.title}">edit</button></td>
@@ -110,6 +112,7 @@ function showEditorStories(storyArr) {
     <th>Genre</th>
     <th>Blurb</th>
     <th>Description</th>
+    <th>Completion Date</th>
     <th>Status</th>
     <th>Est Length</th>
     </tr>`;
@@ -125,6 +128,7 @@ function showEditorStories(storyArr) {
             <td>${story.genre}</td>
             <td>${story.blurb}</td>
             <td>${story.desc}</td>
+            <td>${story.stringDate}</td>
             <td>${story.status}</td>
             <td>${story.length}</td>
             <td><button id="approve${story.title}">approve</button></td>

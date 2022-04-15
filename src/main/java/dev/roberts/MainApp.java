@@ -295,8 +295,6 @@ public class MainApp {
 			ctx.json(sList);
 		});
 		
-		//Added comment
-		
 		app.get("/stories/editor/{uName}", ctx -> {
 			String pathParam = ctx.pathParam("uName");
 			User u = service.getActiveUser(pathParam);
